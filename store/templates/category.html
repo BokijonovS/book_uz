@@ -4,72 +4,99 @@
 {% block content %}
 
 {# Header #}
-    <header class="bg-dark py-5">
-        <div class="container px-4 px-lg-5 my-5">
-            <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder" style="color: #FFFFFF">{{ category }}</h1>
-                <p class="lead fw-normal text-white-50 mb-0">Kategoriyalar Sahifasi</p>
-            </div>
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder" style="color: #FFFFFF">{{ category }}</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Kategoriyalar Sahifasi</p>
         </div>
-    </header>
+    </div>
+</header>
 
-    <div class="container">
-        <div class="row">
+<div class="container">
+    <div class="row">
 
-    <!-- Products Start -->
-    
-    
-    
-            <div class="container-fluid pt-5 pb-3">
-                <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Kitoblar</span></h2>
-                <div class="row px-xl-5">
-        
-                    {% for product in products %}
-                        {% if product.is_sale == True %}
-        
-                            {% else %}
-                        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                        <a href="{% url 'product' product.id %}">
-                            <div class="product-item bg-light mb-4">
-                                <div class="product-img position-relative overflow-hidden">
-                                    <img class="img-fluid w-100" src="{{ product.image.url }}" alt="">
-                                    <div class="product-action">
-                                        <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
-                                        <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="text-center py-4">
-                                    <a class="h6 text-decoration-none text-truncate" href="{% url 'product' product.id %}">{{ product.name }}</a>
-                                    <div class="d-flex align-items-center justify-content-center mt-2">
-                                        {% if product.discount %}
-                                          <h5><del>{{ product.price }} UZS</del> {{ product.discount }} UZS</h5>
-                                        {% else %}
-                                          <h5>{{ product.price }}</h5>
-                                        {% endif %}
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-center mb-1">
-                                        <small class="fa fa-star text-primary mr-1"></small>
-                                        <small class="fa fa-star text-primary mr-1"></small>
-                                        <small class="fa fa-star text-primary mr-1"></small>
-                                        <small class="fa fa-star text-primary mr-1"></small>
-                                        <small class="fa fa-star text-primary mr-1"></small>
-                                        <small>(99)</small>
-                                    </div>
+        <!-- Products Start -->
+
+
+        <div class="container-fluid pt-5 pb-3">
+            <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Kitoblar</span>
+            </h2>
+            <div class="row px-xl-5">
+
+                {% for product in products %}
+                {% if product.is_sale == True %}
+
+                {% else %}
+                <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                    <a href="{% url 'product' product.id %}">
+                        <div class="product-item bg-light mb-4">
+                            <div class="product-img position-relative overflow-hidden">
+                                <img class="img-fluid w-100" src="{{ product.image.url }}" alt="">
+                                <div class="product-action">
+                                    <a class="btn btn-outline-dark btn-square"
+                                       href="{% url 'to_cart' product.id 'add' %}"><i
+                                            class="fa fa-shopping-cart"></i></a>
+                                    <a class="btn btn-outline-dark btn-square"
+                                       href="{% url 'toggle_like' product.id %}"><i class="far fa-heart"></i></a>
+                                    <a class="btn btn-outline-dark btn-square"
+                                       href="{% url 'product' product.id %}"><i class="far fa-eye"></i></a>
                                 </div>
                             </div>
-                        </a>
-                    </div>
-                        {% endif %}
-                    {% endfor %}
+                            <div class="text-center py-4">
+                                <a class="h6 text-decoration-none text-truncate" href="{% url 'product' product.id %}">{{
+                                    product.name }}</a>
+                                <div class="d-flex align-items-center justify-content-center mt-2">
+                                    {% if product.discount %}
+                                    <h5>
+                                        <del>{{ product.price }} UZS</del>
+                                        {{ product.discount }} UZS
+                                    </h5>
+                                    {% else %}
+                                    <h5>{{ product.price }}</h5>
+                                    {% endif %}
+                                </div>
+                                <div class="d-flex align-items-center justify-content-center mb-1">
+                                    {% if product.rating > 0 %}
+                                    <small class="fa fa-star text-primary mr-1"></small>
+                                    {% else %}
+                                    <small class="far fa-star text-primary mr-1"></small>
+                                    {% endif %}
+                                    {% if product.rating > 1 %}
+                                    <small class="fa fa-star text-primary mr-1"></small>
+                                    {% else %}
+                                    <small class="far fa-star text-primary mr-1"></small>
+                                    {% endif %}
+                                    {% if product.rating > 2 %}
+                                    <small class="fa fa-star text-primary mr-1"></small>
+                                    {% else %}
+                                    <small class="far fa-star text-primary mr-1"></small>
+                                    {% endif %}
+                                    {% if product.rating > 3 %}
+                                    <small class="fa fa-star text-primary mr-1"></small>
+                                    {% else %}
+                                    <small class="far fa-star text-primary mr-1"></small>
+                                    {% endif %}
+                                    {% if product.rating > 4 %}
+                                    <small class="fa fa-star text-primary mr-1"></small>
+                                    {% else %}
+                                    <small class="far fa-star text-primary mr-1"></small>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endif %}
+                {% endfor %}
 
 
+                <!-- Products End -->
 
-    <!-- Products End -->
-
+            </div>
         </div>
     </div>
-        </div>
-    </div>
-    
+</div>
+
 
 {% endblock %}

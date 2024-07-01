@@ -13,9 +13,19 @@ def books_list(request):
     products = Product.objects.all()
     return render(request, 'books_list.html', {'products': products})
 
+
 def books(request):
     products = Product.objects.all()
     return render(request, 'books.html', {'products': products})
+
+
+def books_by_language(request, language):
+    products = Product.objects.filter(language=language)
+    return render(request, 'books.html', {'products': products})
+
+
+# def books_by_year(request, year):
+#     products = Product.objects.filter(year=year)
 
 
 def update_password(request):
@@ -80,8 +90,14 @@ def product(request, pk):
 
 
 def home(request):
-    products = Product.objects.all()
-    return render(request, 'index.html', {'products': products})
+    products = Product.objects.order_by('-pk')[:4]
+    products_by_rating = Product.objects.order_by('-rating')[:8]
+
+    context = {
+        'products': products,
+        'products_by_rating': products_by_rating
+    }
+    return render(request, 'index.html', context)
 
 
 def contact(request):
@@ -135,13 +151,13 @@ def register_user(request):
 
 
 def discount(request):
-    chegirmalar = Product.objects.all()
+    chegirmalar = Product.objects.all()[:2]
     return render(request, 'discount.html', {'chegirmalar': chegirmalar})
 
 
 @login_required
-def toggle_like(request, post_id):
-    product = get_object_or_404(Product, id=post_id)
+def toggle_like(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
     like_dislike, created = LikeDislike.objects.get_or_create(user=request.user, product=product)
     if not created:
         like_dislike.delete()

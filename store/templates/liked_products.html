@@ -2,60 +2,97 @@
 {% load static %}
 
 {% block content %}
-    <div class="d-flex">
-{% for like in likes %}
-                {% if like.product.quantity > 0 %}
-
-
-                    <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                        <a href="{% url 'product' like.product.id %}">
-                            <div class="product-item bg-light mb-4">
-                                <div class="product-img position-relative overflow-hidden">
-                                    <img class="img-fluid w-100" src="{{ like.product.image.url }}" alt="">
-                                    <div class="product-action">
-                                        <a class="btn btn-outline-dark btn-square"
-                                           href="{% url 'to_cart' like.product.id 'add' %}"><i
-                                                class="fa fa-shopping-cart"></i></a>
-                                        {% if request.user.is_authenticated %}
-                                            <a href="{% url 'toggle_like' like.product.id %}"
-                                               class="btn btn-outline-dark btn-square"><i
-                                                    class="far fa-heart"></i></a>
-                                        {% else %}
-                                            <a href="{% url 'login' %}"
-                                               class="btn btn-outline-dark btn-square"><i
-                                                    class="far fa-heart"></i></a>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="text-center py-4">
-                                    <a class="h6 text-decoration-none text-truncate"
-                                       href="{% url 'product' like.product.id %}">{{ like.product.name }}</a>
-                                    <div class="d-flex align-items-center justify-content-center mt-2">
-                                        {% if like.product.discount %}
-                                            <h5>
-                                                <del>{{ like.product.price }} UZS</del>
-                                                {{ like.product.discount }} UZS
-                                            </h5>
-                                        {% else %}
-                                            <h5>{{ like.product.price }}</h5>
-                                        {% endif %}
-                                    </div>
-
-                                    <div class="d-flex align-items-center justify-content-center mb-1">
-                                        <small class="fa fa-star text-primary mr-1"></small>
-                                        <small class="fa fa-star text-primary mr-1"></small>
-                                        <small class="fa fa-star text-primary mr-1"></small>
-                                        <small class="fa fa-star text-primary mr-1"></small>
-                                        <small class="fa fa-star text-primary mr-1"></small>
-                                        <small>(99)</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                {% else %}
-
-                {% endif %}
-            {% endfor %}
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder" style="color: #FFFFFF">Yoqtirgan kitoblaringiz</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Yoqtirilganlar Sahifasi</p>
+        </div>
     </div>
+</header>
+
+<div class="container-fluid pt-5 pb-3">
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span
+            class="bg-secondary pr-3">Kitoblar</span></h2>
+    <div class="row px-xl-5">
+        <div class="d-flex">
+            {% for like in likes %}
+            {% if like.product.quantity > 0 %}
+
+
+            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                <a href="{% url 'product' like.product.id %}">
+                    <div class="product-item bg-light mb-4">
+                        <div class="product-img position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="{{ like.product.image.url }}" alt="">
+                            <div class="product-action">
+                                <a class="btn btn-outline-dark btn-square"
+                                   href="{% url 'to_cart' like.product.id 'add' %}"><i
+                                        class="fa fa-shopping-cart"></i></a>
+                                {% if request.user.is_authenticated %}
+                                <a href="{% url 'toggle_like' like.product.id %}"
+                                   class="btn btn-outline-dark btn-square"><i
+                                        class="far fa-heart"></i></a>
+                                {% else %}
+                                <a href="{% url 'login' %}"
+                                   class="btn btn-outline-dark btn-square"><i
+                                        class="far fa-heart"></i></a>
+                                {% endif %}
+                                <a href="{% url 'product' like.product.id %}"
+                                   class="btn btn-outline-dark btn-square"><i
+                                        class="far fa-eye"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center py-4">
+                            <a class="h6 text-decoration-none text-truncate"
+                               href="{% url 'product' like.product.id %}">{{ like.product.name }}</a>
+                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                {% if like.product.discount %}
+                                <h5>
+                                    <del>{{ like.product.price }} UZS</del>
+                                    {{ like.product.discount }} UZS
+                                </h5>
+                                {% else %}
+                                <h5>{{ like.product.price }}</h5>
+                                {% endif %}
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-center mb-1">
+                                {% if like.product.rating > 0 %}
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                {% else %}
+                                <small class="far fa-star text-primary mr-1"></small>
+                                {% endif %}
+                                {% if like.product.rating > 1 %}
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                {% else %}
+                                <small class="far fa-star text-primary mr-1"></small>
+                                {% endif %}
+                                {% if like.product.rating > 2 %}
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                {% else %}
+                                <small class="far fa-star text-primary mr-1"></small>
+                                {% endif %}
+                                {% if like.product.rating > 3 %}
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                {% else %}
+                                <small class="far fa-star text-primary mr-1"></small>
+                                {% endif %}
+                                {% if like.product.rating > 4 %}
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                {% else %}
+                                <small class="far fa-star text-primary mr-1"></small>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% else %}
+
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock content %}
