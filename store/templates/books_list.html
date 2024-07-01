@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="{% url 'home' %}">Bosh Sahifa</a>
+                    <span class="breadcrumb-item active">Kitoblar</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+
+    <!-- Shop Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <!-- Shop Sidebar Start -->
+            <div class="col-lg-3 col-md-4">
+                <!-- Price Start -->
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Yozuv tili</span></h5>
+                <div class="bg-light p-4 mb-30">
+                    <form>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" checked id="price-all">
+                            <label class="custom-control-label" for="price-all">Hammasi</label>
+                            <span class="badge border font-weight-normal"></span>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" id="price-1">
+                            <label class="custom-control-label" for="price-1">O'zbek tili</label>
+                            <span class="badge border font-weight-normal"></span>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" id="price-2">
+                            <label class="custom-control-label" for="price-2">Rus tili</label>
+                            <span class="badge border font-weight-normal"></span>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" id="price-3">
+                            <label class="custom-control-label" for="price-3">Ingliz tili</label>
+                            <span class="badge border font-weight-normal"></span>
+                        </div>
+                    </form>
+                </div>
+                <!-- Price End -->
+
+
+                <!-- Size Start -->
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Yozilgan Yili</span></h5>
+                <div class="bg-light p-4 mb-30">
+                    <form>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" checked id="size-all">
+                            <label class="custom-control-label" for="size-all">Hammasi</label>
+                            <span class="badge border font-weight-normal"></span>
+                        </div>
+
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" id="size-1">
+                            <label class="custom-control-label" for="size-1">Hozir - 2000</label>
+                            <span class="badge border font-weight-normal"></span>
+                        </div>
+
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" id="size-2">
+                            <label class="custom-control-label" for="size-2">2000 - 1900</label>
+                            <span class="badge border font-weight-normal"></span>
+                        </div>
+
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" id="size-2">
+                            <label class="custom-control-label" for="size-2">1900 - 1800</label>
+                            <span class="badge border font-weight-normal"></span>
+                        </div>
+
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" id="size-3">
+                            <label class="custom-control-label" for="size-3">1800 - </label>
+                            <span class="badge border font-weight-normal"></span>
+                        </div>
+                    </form>
+                </div>
+                <!-- Size End -->
+            </div>
+            <!-- Shop Sidebar End -->
+
+
+            <!-- Shop Product Start -->
+            <div class="col-lg-9 col-md-8">
+                <div class="row pb-3">
+                    <div class="col-12 pb-1">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <div>
+                                <a href="{% url 'books' %}"><button class="btn btn-sm btn-light"><i class="fa fa-th-large"></i></button></a>
+                                <a href="{% url 'books_list' %}"><button class="btn btn-sm btn-light ml-2"><i class="fa fa-bars"></i></button></a>
+                            </div>
+                            <div class="ml-2">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Tartiblash</button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="#">Oxirgi</a>
+                                        <a class="dropdown-item" href="#">Ommabop</a>
+                                        <a class="dropdown-item" href="#">Eng zo'r kitob</a>
+                                    </div>
+                                </div>
+                                <div class="btn-group ml-2">
+                                    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Ko'rsatish</button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="#">10</a>
+                                        <a class="dropdown-item" href="#">20</a>
+                                        <a class="dropdown-item" href="#">30</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    {% for product in products %}
+                {% if product.quantity >= 1 %}
+                    <div class="card mb-3" style="max-width: 95%; max-height: ">
+                      <div class="row g-0">
+                        <div class="col-md-2" style="padding-left: 0">
+                          <img src="{{ product.image.url }}" class="img-fluid rounded-start" alt="..." style="max-width: 100%;">
+                        </div>
+                        <div class="col-md-10">
+                          <div class="card-body">
+                            <h4 class="card-title">{{ product }}</h4>
+                            <h5 class="card-text">{{ product.description | truncatewords:40 }}</h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {% else %}
+
+                {% endif %}
+            {% endfor %}
+
+
+
+        </div>
+    </div>
+        </div>
+    </div>
+    <!-- Shop End -->
+
+
+
+{% endblock %}

@@ -1,0 +1,67 @@
+<div class="container-fluid">
+    <div class="row bg-secondary py-1 px-xl-5">
+        <div class="col-lg-6 d-none d-lg-block">
+            <div class="d-inline-flex align-items-center h-100">
+                <a class="text-body mr-3" href="{% url 'about' %}">Biz Haqimizda</a>
+                <a class="text-body mr-3" href="{% url 'contact' %}">Aloqa</a>
+                <a class="text-body mr-3" href="">Yordam</a>
+                <a class="text-body mr-3" href="">FAQ</a>
+            </div>
+        </div>
+        <div class="col-lg-6 text-center text-lg-right">
+            <div class="d-inline-flex align-items-center">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'update_user' %}" class="text-decoration-none text-black-50 mr-3">Profil</a>
+                    <a href="{% url 'logout' %}" class="text-decoration-none text-black-50 mr-3">Chiqish</a>
+                {% else %}
+                    <a href="{% url 'register' %}" class="text-decoration-none text-black-50 mr-3">Ro'yhatdan o'tish</a>
+                    <a href="{% url 'login' %}" class="text-decoration-none text-black-50 mr-3">Kirish</a>
+                {% endif %}
+
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">UZ</button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <button class="dropdown-item" type="button">UZ</button>
+                        <button class="dropdown-item" type="button">EN</button>
+                        <button class="dropdown-item" type="button">RU</button>
+                    </div>
+                </div>
+            </div>
+            <div class="d-inline-flex align-items-center d-block d-lg-none">
+                <a href="" class="btn px-0 ml-2">
+                    <i class="fas fa-heart text-dark"></i>
+                    <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;"></span>
+                </a>
+                <a href="" class="btn px-0 ml-2">
+                    <i class="fas fa-shopping-cart text-dark"></i>
+                    <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
+        <div class="col-lg-4">
+            <a href="{% url 'home' %}" class="text-decoration-none">
+                <span class="h1 text-uppercase text-primary bg-dark px-2 ">Book</span>
+                <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Uz</span>
+            </a>
+        </div>
+        <div class="col-lg-4 col-6 text-left">
+            <form action="">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for products">
+                    <div class="input-group-append">
+                            <span class="input-group-text bg-transparent text-primary">
+                                <i class="fa fa-search"></i>
+                            </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-4 col-6 text-right">
+            <p class="m-0">Mijozlarga Xizmat ko'rsatish</p>
+            <h5 class="m-0">+998 71 230 00 50</h5>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        {% block title %}
+        Book Uz
+        {% endblock title %}
+    </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'assets/Logo.a146e98cabc393f1280fbaca34e7296b.svg' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    {% include 'styles/fonts.html' %}
+
+    {% include 'styles/styles.html' %}
+
+    {% include 'scripts/main.html' %}
+
+
+</head>
+
+<body>
+<!-- Topbar Start -->
+{% include 'components/topbar.html' %}
+<!-- Topbar End -->
+
+
+<!-- Navbar Start -->
+{% include 'components/navbar.html' %}
+<!-- Navbar End -->
+
+
+<!--Messages-->
+{% include 'components/messages.html' %}
+
+
+<!--Content-->
+{% block content %}
+{% endblock content %}
+
+
+<!-- Footer Start -->
+{% include 'components/footer.html' %}
+<!-- Footer End -->
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+<!-- JavaScript Libraries -->
+{% include 'scripts/scripts.html' %}
+<!-- Main -->
+
+</body>
+</html>

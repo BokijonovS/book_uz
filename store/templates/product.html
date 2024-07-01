@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+        <br>
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-4">
+                <br>
+              <img src="{{ product.image.url }}" class="img-fluid rounded-start" alt="...">
+                <br>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h2 class="card-title">{{ product.name }}</h2>
+                <h4><a href="" class="card-text">{{ product.author }}</a></h4>
+                <p>ISBN: {{ product.isbn }}</p>
+                <p>Yozuvi: {{ product.writing }}</p>
+                <p>Yili: {{ product.year }}</p>
+                <p>Tili: {{ product.language }}</p>
+                <p>Betlar soni: {{ product.pages }}</p>
+                <p>Nashriyot: {{ product.publisher }}</p>
+                <p>Muqova: {{ product.cover }}</p>
+                {% if product.discount %}
+                  <h5><del>{{ product.price }} UZS</del> {{ product.discount }} UZS</h5>
+                {% else %}
+                    <h5>{{ product.price }}</h5>
+                    <br>ID: {{ product.id }}
+                {% endif %}
+
+                <button type="button" value="{{ product.id }}" class="btn btn-warning" id="add-cart">Add To Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Kitob Haqida</h5>
+        <p class="card-text">{{ product.description }}</p>
+      </div>
+    </div>
+    </div>
+
+
+{% endblock %}
