@@ -150,10 +150,6 @@ def register_user(request):
         return render(request, 'register.html', {'form': form})
 
 
-def discount(request):
-    chegirmalar = Product.objects.all()[:2]
-    return render(request, 'discount.html', {'chegirmalar': chegirmalar})
-
 
 @login_required
 def toggle_like(request, product_id):

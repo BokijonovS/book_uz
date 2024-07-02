@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08776981-5dc6-423a-81d1-6e6fe255d83e" name="Changes" comment="" />
+    <list default="true" id="08776981-5dc6-423a-81d1-6e6fe255d83e" name="Changes" comment="committed">
+      <change beforePath="$PROJECT_DIR$/store/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -102,9 +104,22 @@
       <workItem from="1719823266163" duration="1000" />
       <workItem from="1719823324568" duration="3874000" />
     </task>
+    <task id="LOCAL-00001" summary="committed">
+      <option name="closed" value="true" />
+      <created>1719888957706</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1719888957706</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="committed" />
+    <option name="LAST_COMMIT_MESSAGE" value="committed" />
   </component>
 </project>
