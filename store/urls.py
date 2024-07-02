@@ -19,4 +19,5 @@ urlpatterns = [
     path('books-list/', books_list, name='books_list'),
     path('like/<int:product_id>/', toggle_like, name='toggle_like'),
     path('liked-products/<int:user_id>', liked_products, name='liked_products'),
+
 ]

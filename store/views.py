@@ -11,7 +11,7 @@ from .forms import SignUpForm, UpdateUserForm, ChangePasswordForm
 
 def books_list(request):
     products = Product.objects.all()
-    return render(request, 'books_list.html', {'products': products})
+    return render(request, 'books_list.html', {'products': products, 'leatest_products': leatest_products})
 
 
 def books(request):
@@ -150,9 +150,6 @@ def register_user(request):
         return render(request, 'register.html', {'form': form})
 
 
-def discount(request):
-    chegirmalar = Product.objects.all()[:2]
-    return render(request, 'discount.html', {'chegirmalar': chegirmalar})
 
 
 @login_required
@@ -168,3 +165,14 @@ def liked_products(request, user_id):
     user = User.objects.get(id=user_id)
     likes = LikeDislike.objects.filter(user=user)
     return render(request, 'liked_products.html', {'likes': likes})
+
+
+def latest_products(request):
+    latest = Product.objects.order_by('-pk')[:4]
+    return render(request, 'latest.html', {'latest': latest})
+
+
+def discount(request):
+    product_discount = Product.objects.filter(discount__gt=0)
+    return render(request, 'discount.html', {'product_discount': product_discount})
+
