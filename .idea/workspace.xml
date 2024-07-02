@@ -5,19 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08776981-5dc6-423a-81d1-6e6fe255d83e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/scripts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/books.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/books.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/books_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/books_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/category.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/detail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/liked_products.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/liked_products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookuz/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/bookuz/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookuz/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/bookuz/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/templates/cart/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/cart/templates/cart/cart.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/components/topbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/topbar.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -115,7 +106,7 @@
       <workItem from="1719817876960" duration="4887000" />
       <workItem from="1719823115087" duration="127000" />
       <workItem from="1719823266163" duration="1000" />
-      <workItem from="1719823324568" duration="559000" />
+      <workItem from="1719823324568" duration="3530000" />
     </task>
     <servers />
   </component>
