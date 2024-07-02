@@ -20,12 +20,10 @@
 
 
                 <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">UZ</button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <button class="dropdown-item" type="button">UZ</button>
-                        <button class="dropdown-item" type="button">EN</button>
-                        <button class="dropdown-item" type="button">RU</button>
-                    </div>
+                    {% if request.user.is_superuser %}
+                    <a href="/admin/" type="button" class="btn btn-sm btn-light">Admin panel</a>
+                    {% endif %}
+
                 </div>
             </div>
             <div class="d-inline-flex align-items-center d-block d-lg-none">
