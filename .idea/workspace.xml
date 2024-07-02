@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08776981-5dc6-423a-81d1-6e6fe255d83e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookuz/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/bookuz/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookuz/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/bookuz/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/templates/cart/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/cart/templates/cart/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/components/topbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/topbar.html" afterDir="false" />
-    </list>
+    <list default="true" id="08776981-5dc6-423a-81d1-6e6fe255d83e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -106,7 +100,7 @@
       <workItem from="1719817876960" duration="4887000" />
       <workItem from="1719823115087" duration="127000" />
       <workItem from="1719823266163" duration="1000" />
-      <workItem from="1719823324568" duration="3530000" />
+      <workItem from="1719823324568" duration="3874000" />
     </task>
     <servers />
   </component>
