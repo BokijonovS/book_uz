@@ -26,28 +26,18 @@
             <h5 class="section-title position-relative text-uppercase mb-3"><span
                     class="bg-secondary pr-3">Yozuv tili</span></h5>
             <div class="bg-light p-4 mb-30">
-                <form>
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" checked id="price-all">
-                        <label class="custom-control-label" for="price-all">Hammasi</label>
+                <div>
+                    <div class="custom-control d-flex align-items-center justify-content-between mb-3">
+                        <a href="{% url 'books' %}" style="color:#1b1e21">Hammasi</a>
                         <span class="badge border font-weight-normal"></span>
                     </div>
+                    {% for language in languages %}
                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" id="price-1">
-                        <label class="custom-control-label" for="price-1">O'zbek tili</label>
+                        <a href="{% url 'books_by_language' language.slug %}" style="color:#1b1e21">{{ language.name }}</a>
                         <span class="badge border font-weight-normal"></span>
                     </div>
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" id="price-2">
-                        <label class="custom-control-label" for="price-2">Rus tili</label>
-                        <span class="badge border font-weight-normal"></span>
-                    </div>
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" id="price-3">
-                        <label class="custom-control-label" for="price-3">Ingliz tili</label>
-                        <span class="badge border font-weight-normal"></span>
-                    </div>
-                </form>
+                    {% endfor %}
+                </div>
             </div>
             <!-- Price End -->
 
@@ -56,37 +46,14 @@
             <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Yozilgan Yili</span>
             </h5>
             <div class="bg-light p-4 mb-30">
-                <form>
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" checked id="size-all">
-                        <label class="custom-control-label" for="size-all">Hammasi</label>
+                <div>
+                    {% for year in year_periods %}
+                    <div class="custom-control d-flex align-items-center justify-content-between mb-4">
+                        <a href="{% url 'books_by_year' year.slug %}" style='color:#1b1f22;'>{{ year.year }}</a>
                         <span class="badge border font-weight-normal"></span>
                     </div>
-
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" id="size-1">
-                        <label class="custom-control-label" for="size-1">Hozir - 2000</label>
-                        <span class="badge border font-weight-normal"></span>
-                    </div>
-
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" id="size-2">
-                        <label class="custom-control-label" for="size-2">2000 - 1900</label>
-                        <span class="badge border font-weight-normal"></span>
-                    </div>
-
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" id="size-2">
-                        <label class="custom-control-label" for="size-2">1900 - 1800</label>
-                        <span class="badge border font-weight-normal"></span>
-                    </div>
-
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" id="size-3">
-                        <label class="custom-control-label" for="size-3">1800 - </label>
-                        <span class="badge border font-weight-normal"></span>
-                    </div>
-                </form>
+                    {% endfor %}
+                </div>
             </div>
             <!-- Size End -->
         </div>
@@ -102,9 +69,9 @@
                             <a href="{% url 'books' %}">
                                 <button class="btn btn-sm btn-light"><i class="fa fa-th-large"></i></button>
                             </a>
-                            <a href="{% url 'books_list' %}">
-                                <button class="btn btn-sm btn-light ml-2"><i class="fa fa-bars"></i></button>
-                            </a>
+<!--?                            <a href="{% url 'books_list' %}">-->
+<!--?                                <button class="btn btn-sm btn-light ml-2"><i class="fa fa-bars"></i></button>-->
+<!--?                            </a>-->
                         </div>
                         <div class="ml-2">
                             <div class="btn-group">
@@ -112,9 +79,9 @@
                                         data-toggle="dropdown">Tartiblash
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#">Oxirgi</a>
-                                    <a class="dropdown-item" href="#">Ommabop</a>
-                                    <a class="dropdown-item" href="#">Eng zo'r kitob</a>
+                                    <a class="dropdown-item" href="{% url 'books_by_date' %}">Oxirgi</a>
+                                    <a class="dropdown-item" href="{% url 'books_by_popularity' %}">Eng mashxur</a>
+                                    <a class="dropdown-item" href="{% url 'books_by_rating' %}">Eng zo'r kitoblar</a>
                                 </div>
                             </div>
                             <div class="btn-group ml-2">
@@ -122,9 +89,9 @@
                                         data-toggle="dropdown">Ko'rsatish
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#">10</a>
-                                    <a class="dropdown-item" href="#">20</a>
-                                    <a class="dropdown-item" href="#">30</a>
+                                    <a class="dropdown-item" href="{% url 'books_in_page' 10 %}">10</a>
+                                    <a class="dropdown-item" href="{% url 'books_in_page' 20 %}">20</a>
+                                    <a class="dropdown-item" href="{% url 'books_in_page' 30 %}">30</a>
                                 </div>
                             </div>
                         </div>

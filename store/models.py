@@ -63,6 +63,18 @@ class YearPeriod(models.Model):
         return self.year
 
 
+class View(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey('Product', on_delete=models.CASCADE)
+    viewed_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'product')
+
+    def __str__(self):
+        return f"{self.user} viewed {self.product}"
+
+
 class Product(models.Model):
     name = models.CharField(max_length=100)
     price = models.DecimalField(default=0, decimal_places=2, max_digits=10)
@@ -93,8 +105,7 @@ class Product(models.Model):
     )
     added = models.DateTimeField(auto_now_add=True, null=True)
     updated = models.DateTimeField(auto_now=True, null=True)
-    views = models.PositiveIntegerField(default=0)
-
+    views = models.IntegerField(default=0)
 
 
     def __str__(self):

@@ -70,3 +70,6 @@ class ChangePasswordForm(SetPasswordForm):
 		self.fields['new_password2'].label = ''
 		self.fields['new_password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'
 
+
+class BookSearchForm(forms.Form):
+    query = forms.CharField(label='Search for books', max_length=100)

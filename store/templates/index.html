@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load store_tags %}
 
 {% block content %}
 <style>
@@ -37,7 +38,7 @@
                                     bir-biriga bevosita yoki bilvosita bogʻliq boʻlgan „mehnat faoliyati“, „ruhiy
                                     faoliyat“, „estetik faoliyat“ kabi jihatlarni oʻz ichiga oladi.</p>
                                 <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
-                                   href="{% url 'category' 'Badiiy adabiyotlar' %}">Xarid Qilish</a>
+                                   href="{% url 'category' 'badiiy-adabiyot' %}">Xarid Qilish</a>
                             </div>
                         </div>
                     </div>
@@ -53,7 +54,7 @@
                                     publitsistik asarlar majmui. Bularning asosiy qismini badiiy asarlar tashkil
                                     etadi.</p>
                                 <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
-                                   href="{% url 'category' 'Bolalar adabiyotlar' %}">Xarid Qilish</a>
+                                   href="{% url 'category' 'bolalar-adabiyoti' %}">Xarid Qilish</a>
                             </div>
                         </div>
                     </div>
@@ -68,7 +69,7 @@
                                     insonning dunyoda tutgan oʻrni va dunyoqarashining yaxlit tizimini ifodalovchi
                                     maʼnaviy faoliyatining bir shakli.</p>
                                 <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
-                                   href="{% url 'category' 'Falsafa' %}">Xarid qilish</a>
+                                   href="{% url 'category' 'falsafa' %}">Xarid qilish</a>
                             </div>
                         </div>
                     </div>
@@ -135,206 +136,20 @@
     <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Kategoriyalar</span>
     </h2>
     <div class="row px-xl-5 pb-3">
-        <a href="{% url 'category' 'Badiiy adabiyotlar' %}">
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>Badiiy Adabiyot</h6>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </a>
+        {% get_all_categories as categories %}
+        {% for category in categories|slice:":12" %}
         <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
+            <a class="text-decoration-none" href="{% url 'category' category.slug %}">
                 <div class="cat-item img-zoom d-flex align-items-center mb-4">
                     <div class="overflow-hidden" style="width: 100px; height: 100px;">
                     </div>
                     <div class="flex-fill pl-3">
-                        <h6>Bolalar Adabiyotlat</h6>
+                        <h6>{{ category.name }}</h6>
                     </div>
                 </div>
             </a>
         </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>O'quv Adabiyotlar</h6>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Biografik Va Memuar</h6>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Diniy Adabiyotlar</h6>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Ilmiy-Ommabop</h6>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Psixologiya</h6>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Biznes Adabiyotlar</h6>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Falsafa</h6>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Ma'rifiy, Tarbiyaviy</h6>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Oila Uchun</h6>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Salomatlik Va Tabobat</h6>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Saylanma</h6>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Shaxsiy Rivojlanish Uchun Adabiyotlar</h6>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>She'riyat</h6>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Siyosiy Adabiyotlar</h6>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Tarixiy</h6>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-            <a class="text-decoration-none" href="">
-                <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h6>Yuridik Adabiyotlar</h6>
-                    </div>
-                </div>
-            </a>
-        </div>
+        {% endfor %}
     </div>
 </div>
 <!-- Categories End -->
@@ -467,12 +282,15 @@
                             <img class="img-fluid w-100"
                                  src="{{ product.image.url }}" alt="">
                             <div class="product-action">
-                                <a class="btn btn-outline-dark btn-square" href="{% url 'to_cart' product.id 'add' %}"><i
+                                <a class="btn btn-outline-dark btn-square"
+                                   href="{% url 'to_cart' product.id 'add' %}"><i
                                         class="fa fa-shopping-cart"></i></a>
                                 {% if request.user.is_authenticated %}
-                                <a class="btn btn-outline-dark btn-square" href="{% url 'toggle_like' product.id %}"><i class="far fa-heart"></i></a>
+                                <a class="btn btn-outline-dark btn-square" href="{% url 'toggle_like' product.id %}"><i
+                                        class="far fa-heart"></i></a>
                                 {% else %}
-                                <a class="btn btn-outline-dark btn-square" href="{% url 'login' %}"><i class="far fa-heart"></i></a>
+                                <a class="btn btn-outline-dark btn-square" href="{% url 'login' %}"><i
+                                        class="far fa-heart"></i></a>
                                 {% endif %}
                                 <a class="btn btn-outline-dark btn-square"
                                    href="{% url 'product' product.id %}"><i

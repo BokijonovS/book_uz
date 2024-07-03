@@ -1,12 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Product, Category, Author, LikeDislike
+
+from .models import Product, Category, LikeDislike, YearPeriod, Language, View
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
-from django import forms
-from .forms import SignUpForm, UpdateUserForm, ChangePasswordForm
+from .forms import SignUpForm, UpdateUserForm, ChangePasswordForm, BookSearchForm
 
 
 def books_list(request):
@@ -16,16 +15,80 @@ def books_list(request):
 
 def books(request):
     products = Product.objects.all()
-    return render(request, 'books.html', {'products': products})
+    context = {
+        'products': products,
+        'languages': Language.objects.all(),
+        'year_periods': YearPeriod.objects.all(),
+    }
+    return render(request, 'books.html', context)
 
 
-def books_by_language(request, language):
+def books_by_language(request, language_slug):
+    language = Language.objects.get(slug=language_slug)
     products = Product.objects.filter(language=language)
-    return render(request, 'books.html', {'products': products})
+    context = {
+        'products': products,
+        'languages': Language.objects.all(),
+        'year_periods': YearPeriod.objects.all(),
+
+    }
+    return render(request, 'books.html', context)
 
 
-# def books_by_year(request, year):
-#     products = Product.objects.filter(year=year)
+def books_by_year(request, year_slug):
+    year = YearPeriod.objects.get(slug=year_slug)
+    products = Product.objects.filter(year_period=year)
+    context = {
+        'products': products,
+        'languages': Language.objects.all(),
+        'year_periods': YearPeriod.objects.all(),
+
+    }
+    return render(request, 'books.html', context)
+
+
+def books_by_date(request):
+    products = Product.objects.order_by('-added')
+    context = {
+        'products': products,
+        'languages': Language.objects.all(),
+        'year_periods': YearPeriod.objects.all(),
+
+    }
+    return render(request, 'books.html', context)
+
+
+def books_by_rating(request):
+    products = Product.objects.order_by('-rating')
+    context = {
+        'products': products,
+        'languages': Language.objects.all(),
+        'year_periods': YearPeriod.objects.all(),
+
+    }
+    return render(request, 'books.html', context)
+
+
+def books_by_popularity(request):
+    products = Product.objects.order_by('-views')
+    context = {
+        'products': products,
+        'languages': Language.objects.all(),
+        'year_periods': YearPeriod.objects.all(),
+
+    }
+    return render(request, 'books.html', context)
+
+
+def books_in_page(request, number):
+    products = Product.objects.all()[:number]
+    context = {
+        'products': products,
+        'languages': Language.objects.all(),
+        'year_periods': YearPeriod.objects.all(),
+
+    }
+    return render(request, 'books.html', context)
 
 
 def update_password(request):
@@ -73,10 +136,9 @@ def category_summary(request):
     return render(request, 'category_summary.html', {})
 
 
-def category(request, foo):
-    foo = foo.replace('_', ' ')
+def category(request, category_slug):
     try:
-        category = Category.objects.get(name=foo)
+        category = Category.objects.get(slug=category_slug)
         products = Product.objects.filter(category=category)
         return render(request, 'category.html', {'products': products, 'category': category})
     except:
@@ -86,6 +148,13 @@ def category(request, foo):
 
 def product(request, pk):
     product = Product.objects.get(id=pk)
+    user_has_viewed = View.objects.filter(user=request.user, product=product).exists()
+
+    if not user_has_viewed:
+        product.views += 1
+        product.save()
+
+        View.objects.create(user=request.user, product=product)
     return render(request, 'product.html', {"product": product})
 
 
@@ -164,3 +233,19 @@ def liked_products(request, user_id):
     user = User.objects.get(id=user_id)
     likes = LikeDislike.objects.filter(user=user)
     return render(request, 'liked_products.html', {'likes': likes})
+
+
+def search_books(request):
+    query = ""
+    results = []
+
+    if 'query' in request.GET:
+        form = BookSearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            # Perform the search
+            results = Product.objects.filter(title__icontains=query)
+    else:
+        form = BookSearchForm()
+
+    return render(request, 'books.html', {'form': form, 'products': results})
