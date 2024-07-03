@@ -1,5 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic import ListView
+
 from .models import Product, Category, Author, LikeDislike
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -164,3 +166,24 @@ def liked_products(request, user_id):
     user = User.objects.get(id=user_id)
     likes = LikeDislike.objects.filter(user=user)
     return render(request, 'liked_products.html', {'likes': likes})
+
+
+def discount(request):
+    discounts = Product.objects.filter(discount__gt=0)
+    return render(request, 'discount.html', {'discounts': discounts})
+
+
+def discount_list(request):
+    discounts = Product.objects.filter(discount__gt=0)
+    return render(request, 'discount_list.html', {'discounts': discounts})
+
+
+def checkout(request):
+    return render(request, 'checkout.html')
+
+
+class SearchResults(ListView):
+    model = Product
+    template_name = 'books.html'
+    context_object_name = 'products'
+
