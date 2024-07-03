@@ -13,6 +13,8 @@ urlpatterns = [
     path('product/<int:pk>', product, name='product'),
     path('category/<slug:category_slug>', category, name='category'),
     path('category_summary/', category_summary, name='category_summary'),
+    path('discount/', discount, name='discount'),
+    path('discount_list/', discount_list, name='discount_list'),
     path('books/', books, name='books'),
     path('books/lang/<slug:language_slug>/', books_by_language, name='books_by_language'),
     path('books/yr/<slug:year_slug>/', books_by_year, name='books_by_year'),
@@ -23,4 +25,5 @@ urlpatterns = [
     path('books-list/', books_list, name='books_list'),
     path('like/<int:product_id>/', toggle_like, name='toggle_like'),
     path('liked-products/<int:user_id>', liked_products, name='liked_products'),
+    path('checkout/', checkout, name='checkout'),
 ]

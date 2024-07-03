@@ -2,6 +2,9 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Product, Category, LikeDislike, YearPeriod, Language, View
+from django.views.generic import ListView
+
+from .models import Product, Category, Author, LikeDislike
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -249,3 +252,22 @@ def search_books(request):
         form = BookSearchForm()
 
     return render(request, 'books.html', {'form': form, 'products': results})
+def discount(request):
+    discounts = Product.objects.filter(discount__gt=0)
+    return render(request, 'discount.html', {'discounts': discounts})
+
+
+def discount_list(request):
+    discounts = Product.objects.filter(discount__gt=0)
+    return render(request, 'discount_list.html', {'discounts': discounts})
+
+
+def checkout(request):
+    return render(request, 'checkout.html')
+
+
+class SearchResults(ListView):
+    model = Product
+    template_name = 'books.html'
+    context_object_name = 'products'
+
