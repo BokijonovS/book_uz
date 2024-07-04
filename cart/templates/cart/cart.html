@@ -37,7 +37,11 @@
                     <tr>
                         <td class="align-middle"> {{ order_item.product.name }}
                         </td>
+                        {% if order_item.product.discount %}
+                        <td class="align-middle">{{ order_item.product.discount }}</td>
+                        {% else %}
                         <td class="align-middle">{{ order_item.product.price }}</td>
+                        {% endif %}
                         <td class="align-middle">
                             <div class="input-group quantity mx-auto" style="width: 100px;">
                                 <div class="input-group-btn">
