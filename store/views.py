@@ -8,6 +8,8 @@ from .models import Product, Category, Author, LikeDislike
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.db.models import Q
+
 from .forms import SignUpForm, UpdateUserForm, ChangePasswordForm, BookSearchForm
 
 
@@ -149,15 +151,16 @@ def category(request, category_slug):
         return redirect('home')
 
 
-def product(request, pk):
-    product = Product.objects.get(id=pk)
-    user_has_viewed = View.objects.filter(user=request.user, product=product).exists()
+def product(request, id):
+    product = Product.objects.get(id=id)
+    if request.user.is_authenticated:
+        user_has_viewed = View.objects.filter(user=request.user, product=product).exists()
 
-    if not user_has_viewed:
-        product.views += 1
-        product.save()
+        if not user_has_viewed:
+            product.views += 1
+            product.save()
 
-        View.objects.create(user=request.user, product=product)
+            View.objects.create(user=request.user, product=product)
     return render(request, 'product.html', {"product": product})
 
 
@@ -246,12 +249,16 @@ def search_books(request):
         form = BookSearchForm(request.GET)
         if form.is_valid():
             query = form.cleaned_data['query']
-            # Perform the search
-            results = Product.objects.filter(title__icontains=query)
+            results = Product.objects.filter(
+                Q(name__icontains=query)
+            )
+            print(results)
     else:
         form = BookSearchForm()
 
-    return render(request, 'books.html', {'form': form, 'products': results})
+    return render(request, 'search_results.html', {'form': form, 'query': query, 'results': results})
+
+
 def discount(request):
     discounts = Product.objects.filter(discount__gt=0)
     return render(request, 'discount.html', {'discounts': discounts})
@@ -266,8 +273,4 @@ def checkout(request):
     return render(request, 'checkout.html')
 
 
-class SearchResults(ListView):
-    model = Product
-    template_name = 'books.html'
-    context_object_name = 'products'
 

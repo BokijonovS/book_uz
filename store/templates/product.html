@@ -30,7 +30,7 @@
                     <br>ID: {{ product.id }}
                 {% endif %}
 
-                <button type="button" value="{{ product.id }}" class="btn btn-warning" id="add-cart">Add To Cart</button>
+                <a type="button" class="btn btn-dark mt-2" href="{% url 'to_cart' product.id 'add' %}">Add To Cart</a>
               </div>
             </div>
           </div>
