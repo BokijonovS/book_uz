@@ -4,25 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08776981-5dc6-423a-81d1-6e6fe255d83e" name="Changes" comment="discount deleted">
-      <change afterPath="$PROJECT_DIR$/.idea/book_uz.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/uploads/product/English-Teacher-3_f2hVgjm.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/uploads/product/img-file-c3e2ecf338268d15b2919413c49998ae_IcSLClo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/image_2024-07-02_13-10-22-removebg-preview.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/image_2024-07-02_13-10-22.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/templates/discount_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="08776981-5dc6-423a-81d1-6e6fe255d83e" name="Changes" comment="discount page added">
+      <change beforePath="$PROJECT_DIR$/.idea/book_uz.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/templates/cart/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/cart/templates/cart/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/books_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/books_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/checkout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/discount.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/discount.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/components/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/components/topbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/topbar.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +21,6 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -51,22 +35,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Merging main",
-    "last_opened_file_path": "C:/Users/SANATBEK/Desktop/BMG/all-set/bookuz",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Windows 10/Desktop/book_uz&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\SANATBEK\Desktop\BMG\all-set\bookuz" />
@@ -101,8 +87,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PY-241.14494.241" />
-        <option value="bundled-python-sdk-0509580d9d50-28c9f5db9ffe-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.14494.241" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PY-241.17011.127" />
+        <option value="bundled-python-sdk-48aec45f0201-7e9c3bbb6e34-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.17011.127" />
       </set>
     </attachedChunks>
   </component>
@@ -121,6 +107,10 @@
       <workItem from="1719823115087" duration="127000" />
       <workItem from="1719823266163" duration="1000" />
       <workItem from="1719823324568" duration="3874000" />
+      <workItem from="1719908067317" duration="6279000" />
+      <workItem from="1719988095265" duration="12751000" />
+      <workItem from="1720018734172" duration="1099000" />
+      <workItem from="1720019863918" duration="43000" />
     </task>
     <task id="LOCAL-00001" summary="committed">
       <option name="closed" value="true" />
@@ -130,13 +120,13 @@
       <option name="project" value="LOCAL" />
       <updated>1719888957706</updated>
     </task>
-    <task id="LOCAL-00002" summary="discount deleted">
+    <task id="LOCAL-00002" summary="discount page added">
       <option name="closed" value="true" />
-      <created>1719889135695</created>
+      <created>1720018792992</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1719889135695</updated>
+      <updated>1720018792992</updated>
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />
@@ -144,20 +134,9 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="committed" />
-    <MESSAGE value="discount deleted" />
-    <option name="LAST_COMMIT_MESSAGE" value="discount deleted" />
+    <MESSAGE value="discount page added" />
+    <option name="LAST_COMMIT_MESSAGE" value="discount page added" />
   </component>
 </project>

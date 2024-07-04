@@ -69,9 +69,6 @@
                             <a href="{% url 'books' %}">
                                 <button class="btn btn-sm btn-light"><i class="fa fa-th-large"></i></button>
                             </a>
-<!--?                            <a href="{% url 'books_list' %}">-->
-<!--?                                <button class="btn btn-sm btn-light ml-2"><i class="fa fa-bars"></i></button>-->
-<!--?                            </a>-->
                         </div>
                         <div class="ml-2">
                             <div class="btn-group">
@@ -84,22 +81,13 @@
                                     <a class="dropdown-item" href="{% url 'books_by_rating' %}">Eng zo'r kitoblar</a>
                                 </div>
                             </div>
-                            <div class="btn-group ml-2">
-                                <button type="button" class="btn btn-sm btn-light dropdown-toggle"
-                                        data-toggle="dropdown">Ko'rsatish
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="{% url 'books_in_page' 10 %}">10</a>
-                                    <a class="dropdown-item" href="{% url 'books_in_page' 20 %}">20</a>
-                                    <a class="dropdown-item" href="{% url 'books_in_page' 30 %}">30</a>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
 
-
-                {% for product in products %}
+        {% if page_obj %}
+            {% for product in page_obj.object_list %}
                 {% if product.quantity >= 1 %}
                 <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                     <a href="{% url 'product' product.id %}">
@@ -166,10 +154,42 @@
                 {% else %}
 
                 {% endif %}
-                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+            <nav>
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
+                    <li class="page-item"><a class="page-link"
+                                             href="?page={{ page_obj.previous_page_number }}">previous</a></li>
+                    {% endif %}
+
+                    <li class="page-item active">
+                        <a href="#" class="page-link">{{ page_obj.number }}</a>
+                    </li>
+
+                    {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last
+                        &raquo;</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
 
 
-            </div>
+{#            {% if page_obj.has_previous %}#}
+{#                <a href="{% url 'books' %}?page={{ page_obj.previous_page_number }}">Previous</a>#}
+{#            {% endif %}#}
+{##}
+{#            {{ page_obj.number }}#}
+{##}
+{##}
+{#            {% if page_obj.has_next %}#}
+{#                <a href="{% url 'books' %}?page={{ page_obj.next_page_number }}">Next</a>#}
+{#            {% endif %}#}
+        </div>
         </div>
     </div>
 </div>

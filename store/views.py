@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Product, Category, LikeDislike, YearPeriod, Language, View
@@ -17,11 +18,16 @@ def books_list(request):
 
 
 def books(request):
-    products = Product.objects.all()
+    products = Product.objects.all().order_by('id')
+    paginator = Paginator(products, 16)
+
+    page_num = request.GET.get('page', 1)
+    page_obj = paginator.get_page(page_num)
     context = {
         'products': products,
         'languages': Language.objects.all(),
         'year_periods': YearPeriod.objects.all(),
+        'page_obj': page_obj,
     }
     return render(request, 'books.html', context)
 
@@ -252,14 +258,24 @@ def search_books(request):
         form = BookSearchForm()
 
     return render(request, 'books.html', {'form': form, 'products': results})
-def discount(request):
-    discounts = Product.objects.filter(discount__gt=0)
-    return render(request, 'discount.html', {'discounts': discounts})
-
 
 def discount_list(request):
     discounts = Product.objects.filter(discount__gt=0)
     return render(request, 'discount_list.html', {'discounts': discounts})
+
+
+
+def discount(request):
+    discounts = Product.objects.filter(discount__gt=0).order_by('id')
+    paginator = Paginator(discounts, 18)
+
+    page_num = request.GET.get('page', 1)
+    page_obj = paginator.get_page(page_num)
+    context = {
+        'discounts': discounts,
+        'page_obj': page_obj,
+    }
+    return render(request, 'discount.html', context)
 
 
 def checkout(request):

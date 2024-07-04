@@ -13,30 +13,30 @@
                 <div class="col-md-4 mb-5">
                     <h5 class="text-secondary text-uppercase mb-4">Tezkor Kitob Do'kon</h5>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Bosh Sahifa</a>
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Chegirmalar</a>
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Xarid Qilish</a>
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Aloqa</a>
+                        <a class="text-secondary mb-2" href="{% url 'home' %}"><i class="fa fa-angle-right mr-2"></i>Bosh Sahifa</a>
+                        <a class="text-secondary mb-2" href="{% url 'books' %}"><i class="fa fa-angle-right mr-2"></i>Kitoblar</a>
+                        <a class="text-secondary mb-2" href="{% url 'discount' %}"><i class="fa fa-angle-right mr-2"></i>Chegirmalar</a>
+                        <a class="text-secondary mb-2" href="{% url 'contact' %}"><i class="fa fa-angle-right mr-2"></i>Aloqa</a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
                     <h5 class="text-secondary text-uppercase mb-4">Mening Akkauntim</h5>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Ro'yhatdan O'tish</a>
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Kirish</a>
-                    </div>
+                        <div class="d-flex flex-column justify-content-start">
+                            {% if user.is_authenticated %}
+                                <a class="text-secondary mb-2" href="{% url 'update_user' %}"><i class="fa fa-angle-right mr-2"></i>Profil</a>
+                                <a class="text-secondary mb-2" href="{% url 'logout' %}"><i class="fa fa-angle-right mr-2"></i>Chiqish</a>
+                            {% else %}
+                                <a class="text-secondary mb-2" href="{% url 'register' %}"><i class="fa fa-angle-right mr-2"></i>Ro'yhatdan O'tish</a>
+                                <a class="text-secondary mb-2" href="{% url 'login' %}"><i class="fa fa-angle-right mr-2"></i>Kirish</a>
+                            {% endif %}
+
+                            {% if request.user.is_superuser %}
+                                <a class="text-secondary mb-2" href="/admin/"><i class="fa fa-angle-right mr-2"></i>Admin Panel</a>
+                            {% endif %}
+                        </div>
                 </div>
                 <div class="col-md-4 mb-5">
-                    <h5 class="text-secondary text-uppercase mb-4">Obuna Bo'ling</h5>
-                    <form action="">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Your Email Address">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary">Subscribe</button>
-                            </div>
-                        </div>
-                    </form>
-                    <h6 class="text-secondary text-uppercase mt-4 mb-3">Ijtimoiy Tarmoq</h6>
+                    <h5 class="text-secondary text-uppercase mb-4">Ijtimoiy Tarmoq</h5>
                     <div class="d-flex">
                         <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
