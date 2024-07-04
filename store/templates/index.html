@@ -77,7 +77,7 @@
             </div>
         </div>
         <div class="col-lg-4">
-            <div class="product-offer mb-3" style="height: 200px;">
+            <div class="product-offer mb-3" style="height: 430px;">
                 <img class="img-fluid" src="{% static 'img/img-c2f7644411ffebe289bcc55979ecff49.jpg' %}" alt="">
                 <div class="offer-text">
 {#                    <h6 class="text-white text-uppercase">20%</h6>#}
@@ -85,14 +85,14 @@
                     <a href="{% url 'discount' %}" class="btn btn-primary">Hozir xarid qiling</a>
                 </div>
             </div>
-            <div class="product-offer mb-30" style="height: 200px;">
-                <img class="img-fluid" src="{% static 'img/img-95ce69640951244ecd899ccfeec4447f.jpg' %}" alt="">
-                <div class="offer-text">
+{#            <div class="product-offer mb-30" style="height: 200px;">#}
+{#                <img class="img-fluid" src="{% static 'img/img-95ce69640951244ecd899ccfeec4447f.jpg' %}" alt="">#}
+{#                <div class="offer-text">#}
 {#                    <h6 class="text-white text-uppercase">10%</h6>#}
-                    <h3 class="text-white mb-3">Oxirgi Chegirmalar</h3>
-                    <a href="{% url 'discount' %}" class="btn btn-primary">Hozir xarid qiling</a>
-                </div>
-            </div>
+{#                    <h3 class="text-white mb-3">Oxirgi Chegirmalar</h3>#}
+{#                    <a href="{% url 'discount' %}" class="btn btn-primary">Hozir xarid qiling</a>#}
+{#                </div>#}
+{#            </div>#}
         </div>
     </div>
 </div>
@@ -138,7 +138,7 @@
     <div class="row px-xl-5 pb-3">
         {% get_all_categories as categories %}
         {% for category in categories|slice:":12" %}
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+        <div class="col-lg-3 col-md-4 col-sm-6 pb-1 ">
             <a class="text-decoration-none" href="{% url 'category' category.slug %}">
                 <div class="cat-item img-zoom d-flex align-items-center mb-4">
                     <div class="overflow-hidden" style="width: 100px; height: 100px;">
